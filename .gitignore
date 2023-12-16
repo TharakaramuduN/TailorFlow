@@ -1,4 +1,4 @@
 node_modules/
 .tunnel.json
 local-cdn/
-env
+env/
