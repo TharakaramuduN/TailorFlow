@@ -1,0 +1,20 @@
+
+.productsinfo .outercontainer{
+    width: 1100px;
+}
+.productsinfo .container{
+    width: 40%;
+    height: 100%;
+}
+.productsinfo .products_list{
+    width: 60%;
+    height: 100%;
+}
+.productsinfo th,td{
+    text-align: center;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+.products{
+    width: 500px;
+}

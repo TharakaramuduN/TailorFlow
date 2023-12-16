@@ -1,0 +1,148 @@
+{%extends 'base.html'%}{%load static%} {%block content%}
+<link rel="stylesheet" href="{% static 'custom/customers.css'%}" />
+{%csrf_token%}
+<div class="container max-w-5xl flex flex-col mx-auto p-5">
+  <h1 class="text-xl font-medium">Customers</h1>
+    <form action="" method="get">
+      <div class="add-customer w-full">
+        <a
+          href="{%url 'newCustomer'%}"
+          class="bg-green-700 px-2 hover:cursor-pointer text-white"
+        >
+           Add Customer
+        </a>
+        <div class="search-bar border border-black rounded-3xl w-fit mr-5">
+          <input
+            name="search"
+            value="{{search_query}}"
+            type="text"
+            placeholder="Search here..."
+            class="w-80 outline-none"
+          />
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass p-2"></i>
+          </button>
+        </div>
+        <div class="sort-container">
+          <label for="sort">Sort by:</label>
+          <select name="sort" id="" onchange="this.form.submit()">
+            <option value="created_at" {% if sort_param == 'created_at' %}selected{% endif %}>Created</option>
+            <option value="Name" {%if sort_param == 'Name'%} selected {%endif%}>Name</option>
+            <option value="Village" {% if sort_param == 'Village' %}selected{% endif %}> Village</option>
+            <option value="Gmail" {% if sort_param == 'Gmail' %}selected{% endif %}>Gmail</option>
+          </select> 
+        </div>
+  </form>
+  </div>
+  <table class="w-full h-fit border-separate border-spacing-y-1 p-5">
+    <thead class="bg-yellow-200 h-10 rounded-md font-normal text-sm">
+      <th class="pl-5">S.no.</th>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Village</th>
+      <th>Phone</th>
+      <th>Gmail</th>
+      <th>Measurements</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      {%for customer in customers%}
+      <tr class="h-14">
+        <td class="pl-5">{{forloop.counter}}</td>
+        <td>
+          {%if customer.profilephoto%}
+          <img
+            class="h-10 w-10 rounded-full"
+            src="{{customer.profilephoto.url}}"
+            alt=""
+          />
+          {%else%}
+          <img
+            class="h-10 w-10 bg-white rounded-full"
+            src="../../media/images/profilephotos/Default_pfp.svg.png"
+            alt=""
+          />
+          {%endif%}
+        </td>
+        <td>{{customer.Name}}</td>
+        <td>{{customer.Village}}</td>
+        <td>{{customer.Phone}}</td>
+        <td>{{customer.Gmail}}</td>
+        <td class="underline text-blue-500">
+          <a
+            class="pl-12"
+            href="{%url 'CustomerMeasurements' customer.customer_id %}"
+            >View</a
+          >
+        </td>
+        <td class="">
+          <a href="{% url 'edit_customers' customer.customer_id%}"
+            ><i class="fa-solid fa-pen-to-square"></i
+          ></a>
+          <button type="button">
+            <i
+              class="fa-solid fa-trash ml-5 delete-btn"
+              id="{{customer.customer_id}}"
+              customer_name="{{customer.Name}}"
+            ></i>
+          </button>
+          <a class="ml-5" href="{%url 'add-products' customer.customer_id%}"
+            ><i class="fa-solid fa-plus"></i
+          ></a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
+
+  <div class="pagination">
+    <span class="step-links">
+
+        <span>
+          {% if customers.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ customers.previous_page_number }}">previous</a>
+          {% endif %}
+        </span>
+
+        <span class="current">
+            Page {{ customers.number }} of {{ customers.paginator.num_pages }}.
+        </span>
+
+        <span>
+          {% if customers.has_next %}
+              <a href="?page={{ customers.next_page_number }}">next</a>
+              <a href="?page={{ customers.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+        </span>
+
+    </span>
+</div>
+
+
+  <div class="dialog-overlay"></div>
+  <dialog class="dialog-box h-72 w-96 rounded-lg bg-gray-200">
+    <h1 class="text-6xl font-medium text-center mt-7">⚠️</h1>
+    <h1 class="mt-4 text-xl text-center font-semibold">Are you sure?</h1>
+    <h1 class="mt-4 text-lg text-center name-in-dialog"></h1>
+    <div class="flex justify-between mt-8 w-2/3 ml-16">
+      <button
+        type="button"
+        class="close-btn rounded px-1 bg-gray-300 h-11 w-24"
+      >
+        Close
+      </button>
+      <button
+        type="button"
+        class="confirm-btn rounded px-1 bg-red-500 text-white h-11 w-24"
+        id=""
+      >
+        Confirm
+      </button>
+    </div>
+  </dialog>
+  <script src="{%static 'js/customers.js'%}"></script>
+</div>
+
+{%endblock%}

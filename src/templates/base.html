@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Pacifico&family=Poppins:wght@200;300;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/58b667687f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>{% block head_title %}{{title}}{% endblock %}</title>
+    <link rel="stylesheet" href="{%static 'css/output.css'%}" />
+    <link rel="stylesheet" href="{%static 'custom/custom.css'%}" />
+  </head>
+  <body class="relative">
+    <header class="top-0 z-10 sticky bg-transparent text-white">
+      <section class="flex justify-between max-w-5xl mx-auto items-center">
+        <h1 class="p-2 text-2xl font-medium">
+          <span class="text-yellow-300">Tailor</span>Measure
+        </h1>
+        <nav class="space-x-6 pr-6 text-md">
+          <a class="hover:text-yellow-300 hover:underline" href="/" id="home"
+            >Home</a
+          >
+          <a
+            class="hover:text-yellow-300 hover:underline"
+            id="orders"
+            href="{%url 'orders'%}"
+            >Orders</a
+          >
+          <a
+            class="hover:text-yellow-300 hover:underline"
+            id="customers"
+            href="{% url 'Customers'%}"
+            >Customers</a
+          >
+          <a class="hover:text-yellow-300 hover:underline" href="#"
+            >Transactions</a
+          >
+          <a class="hover:text-yellow-300 hover:underline" href="#">Profile</a>
+        </nav>
+      </section>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <script src="{%static 'js/base.js'%}"></script>
+  </body>
+</html>

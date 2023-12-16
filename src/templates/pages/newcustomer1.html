@@ -1,0 +1,363 @@
+{%extends "base.html"%} {%load static%} {%block content%}
+<link rel="stylesheet" href="{%static 'custom/newcustomer1.css'%}" />
+<!-- Include flatpickr stylesheet and script -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+<form
+  method="post"
+  enctype="multipart/form-data"
+  class="container mx-auto justify-center mt-3"
+>
+  {%csrf_token%} 
+  <input type="hidden" name="customer_id" id="customer_id" value="{{0}}">
+
+  <fieldset class="customerinfo flex flex-col items-center justify-center p-6 ">
+    <legend class="text-center">Customer Information</legend>
+    <div class=" card justify-center flex flex-col rounded-lg">
+      <h1 class="mb-1 text-yellow-500 mt-3">Name</h1>
+      <input 
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="Name"
+        id="Name" 
+      />
+      <h1 class="mb-1 text-yellow-500">Village/City</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="Village"
+        id="Village"
+      />
+      <h1 class="mb-1 text-yellow-500">Phone</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="Phone"
+        id="Phone"
+      />
+      <h1 class="mb-1 text-yellow-500">Gmail</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="email"
+        name="Gmail"
+        id="Gmail"
+      />
+      <h1 class="mb-1 text-yellow-500">Profile Photo</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="file"
+        name="profilephoto"
+        id="profilephoto"
+      />
+      <div class=" w-full justify-center flex bottom-0 h-7 relative top-20">
+        <button
+          class="next-btn-1 border border-black px-4 rounded bg-yellow-400 hover:bg-yellow-300"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </fieldset>
+
+
+
+  <fieldset class="measurementinfo p-6 ">
+    <legend class="text-center">Measurement Information</legend>
+    <div class="innercontainer flex mx-auto justify-center px-6">
+      <div class="measurementsleft bg-white pl-4">
+        <div class="flex justify-between mt-7 lg:mt-8">
+          <h1 class="text-medium font-medium">Neck</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Neck"
+            value="0"
+            id="neck"
+          />
+        </div>
+        <div class="flex justify-between mt-5 lg:mt-7">
+          <h1 class="text-medium font-medium">Bust/Chest</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Chest"
+            value="0"
+            id="chest"
+          />
+        </div>
+        <div class="flex justify-between mt-9 lg:mt-10">
+          <h1 class="text-medium font-medium">Waist</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Waist"
+            value="0"
+            id="waist"
+          />
+        </div>
+        <div class="flex justify-between mt-4 lg:mt-6">
+          <h1 class="text-medium font-medium">Hips</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Hips"
+            value="0"
+            id="hips"
+          />
+        </div>
+        <div class="flex justify-between mt-5 lg:mt-6">
+          <h1 class="text-medium font-medium">Thigh</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Thigh"
+            value="0"
+            id="thigh"
+          />
+        </div>
+        <div class="flex justify-between mt-5 lg:mt-5">
+          <h1 class="text-medium font-medium">Knee</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Knee"
+            value="0"
+            id="knee"
+          />
+        </div>
+        <div class="flex justify-between mt-6 lg:mt-7">
+          <h1 class="text-medium font-medium">Calf</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Calf"
+            value="0"
+            id="calf"
+          />
+        </div>
+      </div>
+      <div class="text-black women">
+        <img src="{%static 'images/women_body_measurements.jpeg'%}" alt="" /> 
+      </div>
+      <div class="measurementsright bg-white pr-4">
+        <div class="flex justify-between mt-7 lg:mt-8">
+          <h1 class="text-medium font-medium">Sleeve Length</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Sleeve"
+            value="0"
+            id="sleeve"
+          />
+        </div>
+        <div class="flex justify-between mt-12 lg:mt-15">
+          <h1 class="text-medium font-medium">Back Length</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Back"
+            value="0"
+            id="back"
+          />
+        </div>
+        <div class="flex justify-between mt-3 lg:mt-4">
+          <h1 class="text-medium font-medium">Waist Band</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="WaistBand"
+            value="0"
+            id="waistband"
+          />
+        </div>
+        <div class="flex justify-between mt-16 lg:mt-24">
+          <h1 class="text-medium font-medium">Outseam</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Outseam"
+            value="0"
+            id="outseam"
+          />
+        </div>
+        <div class="flex justify-between mt-7 md:h-6 lg:mt-6">
+          <h1 class="text-medium font-medium">Inseam</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Inseam"
+            value="0"
+            id="inseam"
+          />
+        </div>
+        <div class="flex justify-between mt-7 lg:mt-6">
+          <h1 class="text-medium font-medium">Ankle Length</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Ankle"
+            value="0"
+            id="ankle"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="buttons flex justify-between lg:w-2/3 lg:ml-36 px-6">
+      <button
+        class="back-btn-1 border border-black rounded m-5 px-4 bg-yellow-400 hover:bg-yellow-300"
+        type="button"
+      >
+        Back
+      </button>
+      <button
+        class="next-btn-2 border border-black rounded m-5 px-4 bg-yellow-400 hover:bg-yellow-300"
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </fieldset>
+
+
+
+
+  <fieldset
+    class="productsinfo flex flex-col items-center "
+  >
+    <legend class="text-center text-2xl font-normal mb-14">Products</legend>
+    <div class="flex outercontainer">
+      <div class="container flex flex-col space-y-4 w-96 border border-black p-6">
+        <label class="mb-1 text-yellow-500">Product Name</label>
+        <input
+          class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+          type="text"
+          name="productname"
+          id="productname"
+        />
+<div class="flex">
+<div class="">  <h1 class="mb-1 text-yellow-500">Drop-off Date</h1>
+  <input
+    class="mb-2 w-32 outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+    type="text"
+    name="garmentdropoff "
+    id="garmentdropoff"
+  /></div>
+<div class="  ml-28">  <h1 class="mb-1 text-yellow-500">Req. Pick-up</h1>
+  <input
+    class="mb-2 w-32 outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+    type="text"
+    name="requestedpickup "
+    id="requestedpickup"
+  /></div>
+</div>
+        <h1 class="mb-1 text-yellow-500 ">Price</h1>
+        <input
+          class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+          type="number"
+          name="price"
+          id="price"
+        />
+        <h1 class="mb-1 text-yellow-500 hidden">Pick-up Date</h1>
+        <input
+          class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker hidden"
+          type="text"
+          name="garmentpickup"
+          id="garmentpickup"
+        />
+         <h1 class="mb-1 text-yellow-500">Cloth Image</h1>
+            <input
+              class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black "
+              type="file"
+              name="clothimage "
+              id="clothimage"
+            />
+          <h1 class="mb-1 text-yellow-500">Design</h1>
+            <input
+              class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black "
+              type="file"
+              name="design "
+              id="design"
+            />
+      </div>
+
+      <div class="products_list flex items-center  flex-col">
+
+      </div>
+    </div>
+    <div class="add_product w-full lg:mt-11"><button type="button" class=" text-white lg:ml-44 border border-black bg-green-700 rounded hover:bg-green-600">Add Product</button></div>
+      <div class="flex justify-between lg:mt-3 w-52 ">
+        <button
+          class="back-btn-2 border border-black rounded lg:px-4 lg:mr-6 bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="button"
+        >
+          Back
+        </button>
+        <button
+          class="next-btn-3 border border-black rounded lg:px-4  lg:ml-6  bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </fieldset>
+
+
+
+
+  <fieldset
+    class="checkout flex flex-col items-center justify-center p-6 "
+  >
+    <legend class="text-center">Transactions</legend>
+    <div class="container flex flex-col space-y-4 w-96 ">
+      <h1 class="mb-1 text-yellow-500">Amount</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="number"
+        name="amount"
+        id="amount"
+      />
+      <h1 class="mb-1 text-yellow-500">Payment Date</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+        type="text"
+        name="paymentdate"
+        id="paymentdate"
+      />
+      <h1 class="mb-1 text-yellow-500">Total Amount</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="number"
+        name="total"
+        id="total"
+      />
+      <h1 class="mb-1 text-yellow-500">Advance Amount</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="number"
+        name="advance"
+        id="advance"
+      />
+      </div>
+      <div class="flex justify-between lg:mt-9 w-52">
+        <button
+          class="back-btn-3 border border-black rounded lg:px-4 lg:mr-6 bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="button"
+        >
+          Back
+        </button>
+        <button
+          class="submit-btn border border-black rounded lg:px-4  lg:ml-6  bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+<script src="{%static 'js/newcustomer1.js'%}"></script>
+
+
+{%endblock%}

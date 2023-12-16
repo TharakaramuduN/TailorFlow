@@ -1,0 +1,47 @@
+.maincontent{
+    height: 400px;
+    background-color: #44b78b;
+}
+
+.card1, .card2{
+    height: 100%;
+}
+
+
+
+.card1 img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.card2 img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.cards{
+    width: 50%;
+    height: 100%;
+}
+
+
+.createedit{
+    width: 50%;
+}
+
+
+@media (min-width:600px) and (max-width:1024px) {
+    .maincontent{
+        height: 350px;
+        background-color: #44b78b;
+    }
+    .cards{
+        width: 60%;
+        height: 100%;
+    }
+    .createedit{
+        width: 40%;
+    }
+}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'custom/orders.css' %}" />
+
+<input type="hidden" id="title" value="{{title}}">
+<h1 class=" text-xl font-bold text-center mb-10 mt-5">Orders</h1>
+<form action="" method="get">
+  <div class=" flex product-control-bar">
+    <div class="search-bar border border-black rounded-3xl w-fit mr-5">
+      <input name="search" value="{{search_query}}" type="text" placeholder="Search here..." class=" w-80 outline-none">
+      <button type="submit"><i class="fa-solid fa-magnifying-glass p-2"></i></button>
+    </div>
+    <div class="sort-container">
+      <label for="sort">Sort by:</label>
+      <select name="sort" id="" onchange="this.form.submit()">
+        <option value="requested_pick_up_date" {% if sort_param == 'requested_pick_up_date' %}selected{% endif %}>Req. Pick up</option>
+        <option value="price" {%if sort_param == 'price'%} selected {%endif%}>Price</option>
+        <option value="garment_drop_off" {% if sort_param == 'garment_drop_off' %}selected{% endif %}>Drop off</option>
+        <option value="product_name" {% if sort_param == 'product_name' %}selected{% endif %}>product name</option>
+      </select> 
+    </div>
+    <div class="filter-container">
+      <label for="filter">Filter by:</label>
+      <select name="filter" id="" onchange="this.form.submit()">
+        <option value="" {%if filter_param == ''%} selected {%endif%} >Products</option>
+        <option value="groupby_customer" {%if filter_param == 'groupby_customer'%} selected {%endif%}>Customer</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<!-- <table class="w-2/3 mx-auto p-7">
+  <thead class=" bg-yellow-200 h-10 ">
+    <th>Cust. Name</th>
+    <th>Product Name</th>
+    <th>Drop off</th>
+    <th>Req. Pick up</th>
+    <th>Price</th>
+  </thead>
+
+  <tbody>
+    {%for product in products%}
+    <tr>
+      <td>{{ product.customer.Name}}</td>
+      <td>{{ product.product_name }}</td>
+      <td>{{ product.garment_drop_off | date:'Y/m/d' }}</td>
+      <td>{{product.requested_pick_up_date | date:'Y/m/d'}}</td>
+      <td>{{ product.price }}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table> -->
+
+<!-- Add this block to conditionally render the table based on the filter -->
+{% if filter_param == 'groupby_customer' %}
+  <table class="w-2/3 mx-auto p-7">
+    <!-- Add table headers for grouped by customer -->
+    <thead class="bg-yellow-200 h-10">
+      <th>Customer Name</th>
+      <th>Customer Id</th>
+      <th>Number of Products</th>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{ product.customer_name }}</td>
+          <td>{{product.customer_id}}</td>
+          <td>{{ product.num_products }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <!-- The existing table for default view -->
+  <table class="w-2/3 mx-auto p-7">
+    <thead class="bg-yellow-200 h-10">
+      <th>Customer id</th>
+      <th>Cust. Name</th>
+      <th>Product Name</th>
+      <th>Drop off</th>
+      <th>Req. Pick up</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td>{{product.customer.customer_id}}</td>
+          <td>{{ product.customer.Name }}</td>
+          <td>{{ product.product_name }}</td>
+          <td>{{ product.garment_drop_off | date:'Y/m/d' }}</td>
+          <td>{{ product.requested_pick_up_date | date:'Y/m/d' }}</td>
+          <td>{{ product.price }}</td>
+
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+
+<div class="pagination">
+  <span class="step-links">
+
+      <span>
+        {% if products.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ products.previous_page_number }}">previous</a>
+        {% endif %}
+      </span>
+
+      <span class="current">
+          Page {{ products.number }} of {{ products.paginator.num_pages }}.
+      </span>
+
+      <span>
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">next</a>
+            <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+
+  </span>
+</div>
+{% endblock %}

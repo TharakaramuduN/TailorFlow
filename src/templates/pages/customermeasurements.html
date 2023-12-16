@@ -1,0 +1,161 @@
+{%extends 'base.html'%} {%block content%} {%load static%}{%load humanize%}
+<link rel="stylesheet" href="{% static 'custom/customermeasurements.css'%}" />
+<!-- <link rel="stylesheet" href="../../static/custom/customermeasurements.css" /> -->
+<h1 class="text-xl font-semibold mt-12 mb-12 text-center">
+  {{name}}'s Measurements
+</h1>
+
+<div class="innercontainer flex mx-auto justify-center">
+  <div class="measurementsleft bg-white pl-4">
+    <div class="flex justify-between mt-7 lg:mt-9">
+      <h1 class="text-medium font-medium">Neck</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Neck"
+        value="{{customer.Neck | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-5 lg:mt-9">
+      <h1 class="text-medium font-medium">Bust/Chest</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Chest"
+        value="{{customer.Chest | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-9 lg:mt-12">
+      <h1 class="text-medium font-medium">Waist</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Waist"
+        value="{{customer.Waist | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-4 lg:mt-7">
+      <h1 class="text-medium font-medium">Hips</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Hips"
+        value="{{customer.Hips | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-5 lg:mt-7">
+      <h1 class="text-medium font-medium">Thigh</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Thigh"
+        value="{{customer.Thigh | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-5 lg:mt-6">
+      <h1 class="text-medium font-medium">Knee</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Knee"
+        value="{{customer.Knee | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-6 lg:mt-8">
+      <h1 class="text-medium font-medium">Calf</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 rounded"
+        name="Calf"
+        value="{{customer.Calf | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+  </div>
+  <div class="text-black women">
+    <img src="{%static 'images/women_body_measurements.jpeg'%}" alt="" />
+  </div>
+  <div class="measurementsright bg-white pr-4">
+    <div class="flex justify-between mt-7 lg:mt-9">
+      <h1 class="text-medium font-medium">Sleeve Length</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 font-medium rounded"
+        name="Sleeve"
+        value="{{customer.Sleeve | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-12 lg:mt-16">
+      <h1 class="text-medium font-medium">Back Length</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 font-medium rounded"
+        name="Back"
+        value="{{customer.Back | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-3 lg:mt-5">
+      <h1 class="text-medium font-medium">Waist Band</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 font-medium rounded"
+        name="WaistBand"
+        value="{{customer.Waistband | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-16 lg:mt-24">
+      <h1 class="text-medium font-medium">Outseam</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 font-medium rounded"
+        name="Outseam"
+        value="{{customer.Outseam | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-7 md:h-6 lg:mt-9">
+      <h1 class="text-medium font-medium">Inseam</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 font-medium rounded"
+        name="Inseam"
+        value="{{customer.Inseam | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+    <div class="flex justify-between mt-7 lg:mt-9">
+      <h1 class="text-medium font-medium">Ankle Length</h1>
+      <input
+        type="number"
+        class="border border-black w-12 md:h-6 font-medium rounded"
+        name="Ankle"
+        value="{{customer.Ankle | floatformat:0}}"
+        id=""
+        readonly
+      />
+    </div>
+  </div>
+</div>
+
+{%endblock%}

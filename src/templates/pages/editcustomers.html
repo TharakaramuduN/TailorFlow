@@ -1,0 +1,337 @@
+{%extends 'base.html'%}{%load static%} {%block content%}
+<link rel="stylesheet" href="{%static 'custom/editcustomers.css'%}" />
+<!-- Include flatpickr stylesheet and script -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+
+<form
+  method="post"
+  enctype="multipart/form-data"
+  class="container mx-auto justify-center mt-5"
+>
+  {%csrf_token%}
+  <input type="hidden" name="customer_id" id="customer_id" value="{{id}}" />
+
+  <fieldset class="customerinfo flex flex-col items-center justify-center p-6">
+    <legend class="text-center">Customer Information</legend>
+    <div class="justify-center flex flex-col z-50">
+      <h1 class="mb-1 text-yellow-500">Name</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="Name"
+        id="Name"
+        value="{{customer.Name}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Village/City</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="Village"
+        id="Village"
+        value="{{customer.Village}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Phone</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="Phone"
+        id="Phone"
+        value="{{customer.Phone}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Gmail</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="email"
+        name="Gmail"
+        id="Gmail"
+        value="{{customer.Gmail}}"
+      />
+      <div class="justify-center flex bottom-0 h-7 relative top-20 left-24">
+        <button
+          class="next-btn-1 border border-black px-4 rounded bg-yellow-400 hover:bg-yellow-300"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="measurementinfo p-6">
+    <legend class="text-center">Measurement Information</legend>
+    <div class="innercontainer flex mx-auto justify-center px-6">
+      <div class="measurementsleft bg-white pl-4">
+        <div class="flex justify-between mt-7 lg:mt-8">
+          <h1 class="text-medium font-medium">Neck</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Neck"
+            value="{{measurements.Neck}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-5 lg:mt-7">
+          <h1 class="text-medium font-medium">Bust/Chest</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Chest"
+            value="{{measurements.Chest}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-9 lg:mt-10">
+          <h1 class="text-medium font-medium">Waist</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Waist"
+            value="{{measurements.Waist}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-4 lg:mt-6">
+          <h1 class="text-medium font-medium">Hips</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Hips"
+            value="{{measurements.Hips}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-5 lg:mt-6">
+          <h1 class="text-medium font-medium">Thigh</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Thigh"
+            value="{{measurements.Thigh}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-5 lg:mt-5">
+          <h1 class="text-medium font-medium">Knee</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Knee"
+            value="{{measurements.Knee}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-6 lg:mt-7">
+          <h1 class="text-medium font-medium">Calf</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 rounded"
+            name="Calf"
+            value="{{measurements.Calf}}"
+            id=""
+          />
+        </div>
+      </div>
+      <div class="text-black women">
+        <img src="{%static 'images/women_body_measurements.jpeg'%}" alt="" />
+      </div>
+      <div class="measurementsright bg-white pr-4">
+        <div class="flex justify-between mt-7 lg:mt-8">
+          <h1 class="text-medium font-medium">Sleeve Length</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Sleeve"
+            value="{{measurements.Sleeve}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-12 lg:mt-15">
+          <h1 class="text-medium font-medium">Back Length</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Back"
+            value="{{measurements.Back}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-3 lg:mt-4">
+          <h1 class="text-medium font-medium">Waist Band</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="WaistBand"
+            value="{{measurements.Waistband}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-16 lg:mt-24">
+          <h1 class="text-medium font-medium">Outseam</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Outseam"
+            value="{{measurements.Outseam}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-7 md:h-6 lg:mt-6">
+          <h1 class="text-medium font-medium">Inseam</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Inseam"
+            value="{{measurements.Inseam}}"
+            id=""
+          />
+        </div>
+        <div class="flex justify-between mt-7 lg:mt-6">
+          <h1 class="text-medium font-medium">Ankle Length</h1>
+          <input
+            type="number"
+            class="border border-black w-12 md:h-6 font-medium rounded"
+            name="Ankle"
+            value="{{measurements.Ankle}}"
+            id=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="buttons flex justify-between lg:w-2/3 lg:ml-36 px-6">
+      <button
+        class="back-btn-1 border border-black rounded m-5 px-4 bg-yellow-400 hover:bg-yellow-300"
+        type="button"
+      >
+        Back
+      </button>
+      <button
+        class="next-btn-2 border border-black rounded m-5 px-4 bg-yellow-400 hover:bg-yellow-300"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </fieldset>
+
+  <!-- 
+  <fieldset
+    class="productsinfo flex flex-col items-center justify-center p-6"
+  >
+    <legend class="text-center">Products</legend>
+    <div class="container flex flex-col space-y-4 w-96">
+      <h1 class="mb-1 text-yellow-500">Product Name</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="text"
+        name="productname"
+        id="productname"
+        value="{{products.product_name}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Garment Drop-off Date</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+        type="text"
+        name="garmentdropoff "
+        id="garmentdropoff"
+        value="{{products.garment_drop_off|date:'Y-m-d'}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Requested Pick-up Date</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+        type="text"
+        name="requestedpickup"
+        id="requestedpickup"
+        value="{{products.requested_pick_up_date|date:'Y-m-d'}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Pick-up Date</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+        type="text"
+        name="garmentpickup"
+        id="garmentpickup"
+        value="{{products.garment_pick_up|date:'Y-m-d'}}"
+      />
+      </div>
+      <div class="flex justify-between lg:mt-9 w-52 ">
+        <button
+          class="back-btn-2 border border-black rounded lg:px-4 lg:mr-6 bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="button"
+        >
+          Back
+        </button>
+        <button
+          class="next-btn-3 border border-black rounded lg:px-4  lg:ml-6  bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </fieldset>
+
+
+
+
+  <fieldset
+    class="checkout flex flex-col items-center justify-center p-6"
+  >
+    <legend class="text-center">Transactions</legend>
+    <div class="container flex flex-col space-y-4 w-96 ">
+      <h1 class="mb-1 text-yellow-500">Amount</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="number"
+        name="amount"
+        id="amount"
+        value="{{transactions.amount}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Payment Date</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+        type="text"
+        name="paymentdate "
+        id="paymentdate"
+        value="{{transactions.payment_date|date:'Y-m-d'}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Total Amount</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="number"
+        name="total"
+        id="total"
+        value="{{transactions.total_amount}}"
+      />
+      <h1 class="mb-1 text-yellow-500">Advance Amount</h1>
+      <input
+        class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+        type="number"
+        name="advance "
+        id="advance"
+        value="{{transactions.advance_amount}}"
+      />
+      </div>
+      <div class="flex justify-between lg:mt-9 w-52">
+        <button
+          class="back-btn-3 border border-black rounded lg:px-4 lg:mr-6 bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="button"
+        >
+          Back
+        </button>
+        <button
+          class="submit-btn border border-black rounded lg:px-4  lg:ml-6  bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </fieldset> -->
+</form>
+<script src="{%static 'js/editcustomers.js'%}"></script>
+
+{%endblock%}

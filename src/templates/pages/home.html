@@ -1,0 +1,36 @@
+{% extends "base.html"%} {% block content %} {%load static%}
+<link rel="stylesheet" href="{%static 'custom/customhome.css'%}" />
+<div class="color">
+  <main class="">
+    <div class="bg-gray-200">
+      <h1
+        class="p-4 text-black text-2xl font-medium text-center googlefont max-w-4xl mx-auto leading-10"
+      >
+        “Precision in every stitch, elegance in every cut. Crafting style with
+        meticulous measurements.”
+      </h1>
+    </div>
+    <div class="flex maincontent">
+      <div class="cards flex justify-center">
+        <div class="card1 bg-gray-200 lg:p-8 lg:m-10 md:p-6 md:m-7">
+          <img src="{%static 'images/wallpaperflare-cropped.jpg'%}" alt="" />
+        </div>
+        <div class="card2 bg-gray-200 lg:p-8 lg:m-10 lg:mr-0 md:p-6 md:m-7">
+          <img src="{%static 'images/men_suit.jpg'%}" alt="" />
+        </div>
+      </div>
+
+      <div class="createedit flex flex-col justify-center items-center">
+        <button
+          type="button"
+          class="newcustomer border border-black rounded mb-10 h-12 flex items-center justify-center px-3 hover:cursor-pointer bg-gray-200"
+        >
+          Add New Customer
+        </button>
+      </div>
+    </div>
+  </main>
+  <script src="{%static 'js/home.js'%}"></script>
+</div>
+
+{% endblock %}

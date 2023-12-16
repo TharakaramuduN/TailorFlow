@@ -1,0 +1,98 @@
+.hero{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("../images/wallpaperflare.com_wallpaper.jpg");
+    background-size: cover;
+}
+
+.boxdetails{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6));
+}
+
+header{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/OIP.jpeg");
+}
+
+
+
+
+/* .innercontainer{
+    height: 500px;
+    width: 80%;
+}
+
+.women img{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+.women{
+    width: 45%;
+    height: 100%;
+}
+
+.measurementsleft{
+    width: 27.5%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.measurementsright{
+    width: 27.5%;
+    height: 100%;
+    padding-right: 10px;
+}
+
+.customerdetails{
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    right: 40%;
+    color: yellow;
+    z-index: 11;
+}
+
+
+
+@media (min-width:768px) {
+    .innercontainer{
+        position: absolute;
+        height: 500px;
+        width: 80%;
+        top: 70px;
+        left: 100px;
+    }
+    .customerdetails{
+        position: absolute;
+        left: 27%;
+        color: yellow;
+        z-index: 11;
+        width: 400px;
+        height: 400px;
+    }
+    
+}
+
+@media (min-width:1024px) {
+    .innercontainer{
+        position: absolute;
+        height: 550px;
+        width: 80%;
+        top: 100px;
+        left: 150px;
+    }
+    .customerdetails{
+        position: absolute;
+        left: 50%;
+        color: yellow;
+        z-index: 11;
+        width: 400px;
+        height: 400px;
+    }
+    .measurementsright{
+        padding-right: 50px;
+    }
+    .measurementsleft{
+        padding-left: 50px;
+    }
+    
+} */

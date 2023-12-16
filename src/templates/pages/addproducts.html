@@ -1,0 +1,90 @@
+{%extends 'base.html'%}{%load static%}{%block content%}
+<link rel="stylesheet" href="{%static 'custom/addproducts.css'%}">
+<!-- Include flatpickr stylesheet and script -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+
+<form
+method="post"
+class="productsinfo flex flex-col items-center mt-4"
+>
+{%csrf_token%}
+<input type="hidden" name="customer_id" id="customer_id" value="{{id}}">
+<legend class="text-center text-2xl font-normal mb-14">Products</legend>
+    <div class="flex outercontainer">
+      <div class="container flex flex-col space-y-4 w-96 border border-black p-6">
+        <label class="mb-1 text-yellow-500">Product Name</label>
+        <input
+          class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+          type="text"
+          name="productname"
+          id="productname"
+        />
+<div class="flex">
+<div class="">  <h1 class="mb-1 text-yellow-500">Drop-off Date</h1>
+  <input
+    class="mb-2 w-32 outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+    type="text"
+    name="garmentdropoff "
+    id="garmentdropoff"
+  /></div>
+<div class="  ml-28">  <h1 class="mb-1 text-yellow-500">Req. Pick-up</h1>
+  <input
+    class="mb-2 w-32 outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker"
+    type="text"
+    name="requestedpickup "
+    id="requestedpickup"
+  /></div>
+</div>
+        <h1 class="mb-1 text-yellow-500 ">Price</h1>
+        <input
+          class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black"
+          type="number"
+          name="price"
+          id="price"
+        />
+        <h1 class="mb-1 text-yellow-500 hidden">Pick-up Date</h1>
+        <input
+          class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black datepicker hidden"
+          type="text"
+          name="garmentpickup"
+          id="garmentpickup"
+        />
+         <h1 class="mb-1 text-yellow-500">Cloth Image</h1>
+            <input
+              class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black "
+              type="file"
+              name="clothimage "
+              id="clothimage"
+            />
+          <h1 class="mb-1 text-yellow-500">Design</h1>
+            <input
+              class="mb-2 w-full outline-none border border-t-0 border-l-0 border-r-0 border-b-2 border-black "
+              type="file"
+              name="design "
+              id="design"
+            />
+      </div>
+
+      <div class="products_list flex items-center  flex-col">
+
+      </div>
+    </div>
+    <div class="add_product w-full lg:mt-11">
+      <button type="button" class=" text-white lg:ml-96 border border-black bg-green-700 rounded hover:bg-green-600">Add Product</button>
+    </div>
+    <div class="flex justify-between lg:mt-3 w-52 ">
+      <button
+        class="back-btn-2 border border-black rounded lg:px-4 lg:mr-6 bg-yellow-400 hover:bg-yellow-300 focus:outline-none"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+    </div>
+<script src="{%static 'js/addproducts.js'%}"></script>
+</form>
+{%endblock%}
